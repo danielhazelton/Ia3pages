@@ -1,0 +1,255 @@
+<!-- CptS 489, Spring 2020
+     Project: IA #2
+	 Name: Daniel Hazelton
+     File: index.html
+     This file defines a skeleton single page web app using pure JavaScript.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Begin HEAD section of document. Here we must use HTML comments as shown
+    here. -->
+    <!-- Default target for all hyperlinks in this file:
+    https://www.w3schools.com/tags/att_base_target.asp -->
+    <base target="_top"> 
+    <!-- Provide metadata on this file. Can be used by browsers, search engines,
+    etc. -->
+    <meta charset="utf-8">
+    <!-- HTML5 method that specifies viewable part of page ('viewport'). Always
+         use the following, which sets the width of the page to the width of the
+         device and scales page content to fit into page-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Import External stylesheets and libraries using 'CDN' (content delivery
+    network) links: -->
+    <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">    
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
+    <!-- Our local CSS stylesheet -->
+    <link rel="stylesheet" href = "styles/index.css">
+	<title>MyApp</title>
+</head>
+ 
+<body>
+  <!-- Begin the BODY section of the document.  -->
+  
+  <!-- Fixed menu and button content goes here to define app structure: the top
+       bar, the side menu, the bottom bar, and the floating contextual action
+       button  -->
+  <!-- The top navigation bar -->
+  <div id="navBar" class="navbar">  
+    <span class="navbarItems">
+      <button id="menuBtn" style="background-color: transparent;
+      border-color:#13294E; text-align: center">
+        <span id="menuBtnIcon" class="fas fa-bars" style="color:white;
+        font-size: 30px; cursor:pointer; text-align: center">
+        </span>
+      </button>
+      
+      
+      <span id="topBarTitle" style="color:white; font-size: 18px">
+       Welcome!</span>
+  </div>
+  
+  
+ <!--BEGIN SIDE MENU -->
+ <div id="sideMenu" class="sidenav" >
+   <!--SIDE MENU TITLE -->
+  <div class="sidenavtitle">
+      <a href="https://imgbb.com/"><img src="https://i.ibb.co/Yc3PVKb/15987-2.jpg" alt="15987-2" height='50' width='50'>
+      <span id="userID" style="font-size:14px">&nbsp;Daniel Hazelton&nbsp;&nbsp;</span>
+   </div>
+   <!--BEGIN MENU CONTENT-->
+ <div id="mainMenuContent">
+	<h2></h2>
+	<a id="main" class="mode1Item menuItem modeItem"><span class=""></span>&nbsp;Data Table</a>
+	<a id="adddata" class="mode1Item menuItem modeItem"><span class=""></span>&nbsp;Add/Edit Table</a>
+ 
+	<a id="main" class="mode2Item menuItem modeItem"><span class=""></span>&nbsp;WIP</a>
+ <!--BEGIN GROUP OF MODE/ACTION BUTTONS -->
+ <!--Mode buttons show current mode Action buttons are contextual; they provide
+    easy access to most important functionality in current mode 
+  -->
+  <a id="aboutBtn" class="menuItem"><span class="fas fa-info-circle"></span>&nbsp;About</a>
+  <a id="logOutBtn" class="menuItem"><span class="fas fa-sign-out-alt"></span>&nbsp;Log Out</a>
+   <!-- END GROUP OF MODE/ACTION BUTTONS -->
+   <!-- The Modal -->
+	<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p><br>This app was made by Daniel<br></p>
+	<p>Wow!<br></p>
+	<button id="myBtn">OK</button>
+  </div>
+
+	</div>
+   
+</div>
+<!-- END MAIN MENU CONTENT -->
+</div>
+<!-- END SIDEMENU -->
+
+<!-- BEGIN FIXED BOTTOM BAR -->
+<div id ="bottomBar" class="bottombar" style="z-index: 100">
+<a id="mode1" class="bottomBarBtn"><span style="display:block; padding-top:3px"
+class="nonMenuItem fas fa-th-list"></span><span style="display:block;font-size:
+small">View Data</span></a>
+<a id="mode2" class="bottomBarBtn"><span style="display:block; padding-top:3px"
+class="nonMenuItem fas fa-plus"></span><span style="display:block;font-size:
+small">Add Data</span></a>
+</div>
+<!-- END FIXED BOTTOM BAR-->
+ 
+  <!-- BEGIN APP PAGE DEFINITIONS -->
+
+   <div id="loginModeDiv" class="paddedPage">
+    <center>
+      <h1></h1>
+      <form id="loginInterface">
+                 <label for="emailInput" style="padding:0px;
+                 font-size:24px">Email:
+                     <input class="form-control" type="email" 
+                     placeholder="Enter Email Address" id="emailInput"
+                     pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+                     style="text-align:center;width:90%; height:10%; font-size:
+                     24px" required>
+                 </label>
+                 <p></p>
+                 <label for="passwordInput" style="padding:0px;
+                 font-size:24px">Password: 
+                     <input class="form-control" type="password"
+                     placeholder="Enter Password" id="passwordInput"
+                     pattern="[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};\':]+"
+                     style="text-align:center;width:90%; height:10%; font-size:
+                     24px" required>
+                 </label>
+             <p class="bg-danger" id = "feedback" style="font-size:16px"></p>
+             <button type="submit" id="loginBtn" class="loginBtn btn btn-primary
+             btn-block btncolortheme" style="width:70%; font-size: 36px">
+               <span id="loginBtnIcon"></span>
+                Log In
+                </button>
+             <br />
+             <a role="button" class="loginBtn"><img
+             src="https://drive.google.com/uc?export=view&id=1YXRuG0pCtsfvbDSTzuM2PepJdbBpjEut"></a>
+             <a role="button" class="loginBtn"><img
+             src="https://drive.google.com/uc?export=view&id=1ZoySWomjxiCnC_R4n9CZWxd_qXzY1IeL"></a>    
+         </form>
+       </center>
+   </div>
+ 
+   <!-- Data Table Page -->
+   <div id="mode1Div"  class="mode1Div paddedPage">
+    <h1 align="center">Data Table Page</h1> <!-- <-- Change this-->
+    
+	
+	<h2>Data Table</h2>
+
+<table id="mode1Table" class="table table-hover">
+      <thead class="thead-light">
+        <th>Date</th>
+        <th>Course</th>
+        <th>Score</th>
+        <th>View/Edit...</th>
+        <th>Delete</th>
+      </thead>
+      <tbody>
+        <tr">
+         <td colspan="5" style="font-style: italic">No rounds added yet</td>
+        </tr> 
+      </tbody>
+    </table>
+		
+		<div id=plusBtn class="bottomright"><img src="plusB.png" alt="plus pic"></div>
+	
+  </div>
+	<!-- Add Data Record Page -->
+	<div id="adddataDiv"  class="mode2Div paddedPage">
+    <h1 align="center">Add Data Record Page</h1>
+    
+	
+	
+	
+</form>
+	
+
+  </div>
+
+   <!-- WIP page -->
+  <div id="mode2Div" class="mode2Div paddedPage">
+    <h1 align="center">Add Data Page</h1>
+	<form id="mode2Form">
+        <center>
+          <label for="roundDate">Date:
+              <input id="roundDate" class="form-control form-center" type="date" 
+              required>
+          </label>
+          <p></p>
+          <label for="roundCourse">Course:
+              <input id="roundCourse" class="form-control form-center" type="text" 
+              placeholder="Course played" size="50" maxlength="50" required>
+          </label>
+          <p></p>
+          <label for="roundType">Type:
+              <select id="roundType" name="roundType" class="form-control form-center">
+                <option value="practice" selected>Practice</option>
+                <option value="tournament">Tournament</option>
+              </select> 
+          </label>
+          <p></p>
+          <label for="roundHoles"># Holes:
+              <select id="roundHoles" name="roundHoles" class="form-control">
+                <option value="9">9</option>
+                <option value="18" selected>18</option>
+              </select> 
+          </label>
+          <p></p>
+          <label for="roundStrokes"># Strokes:
+              <input id="roundStrokes" class="form-control form-center" type="number" 
+              placeholder="Course played" min="9" max="200" value="80" 
+              onChange="updateSGS()" required>
+          </label>
+          <p></p>
+          <label for="roundTime">Time:<br>
+              <input id="roundMinutes" type="number" size="3"
+              min="10" max="400" value="50" style="text-align: right"
+              onChange="updateSGS()" required> : 
+              <input id="roundSeconds" type="number" size="2"
+              min="0" max="60" value="00" onchange="changeSeconds()"
+              required>
+          </label>
+          <p></p>
+          <label for="roundSGS">Speedgolf Score:<br>
+              <input id="roundSGS" class="form-center" type="text" size="6" value="130:00" disabled>
+          </label>
+          <p></p>
+          <label for="roundNotes">Notes:<br>
+              <textarea id="roundNotes" class="form-control" rows="6" cols="75" placeholder="Enter round notes""></textarea>
+          </label>
+          <p></p>
+          <button id="submitRoundBtn" type="submit" 
+          class="btn btn-primary btn-block btncolortheme" 
+          style="width:70%; font-size: 36px; z-index: 110"><span
+          id="saveIcon">&nbsp;</span><span id="submitBtnLabel"></span>
+		  </button>       
+          </center>
+      </form>
+  </div>
+
+  <!-- END APP PAGE DEFINITIONS -->
+    
+  <!-- Begin SCRIPT section of document. -->
+  
+  
+  <script src="scripts/eventHandlers.js"></script>
+  <script src="scripts/startUp.js"></script>
+ 
+   
+</html>
